@@ -1,0 +1,43 @@
+=====================================================
+ IMAGE COMPRESSION USING SVD
+=====================================================
+Image file            : sample.png
+Matrix size (m x n)   : 400 x 600
+Total pixel values    : 240000
+Rank of image matrix  : 400
+Sample of matrix A (top-left 5 x 5 pixel values):
+   15   15   13   15   15
+   15   15   15   16   14
+   15   16   15   15   16
+   15   15   15   15   14
+   14   15   14   15   15
+Size of U: 400 x 400,  S: 400 x 600,  V: 600 x 600
+Number of singular values : 400
+Largest 10 singular values:
+    52873.68
+    16794.12
+     8457.68
+     6702.06
+     5364.83
+     4614.23
+     3852.21
+     3513.60
+     3194.09
+     2998.28
+Check sigma = sqrt(eig(A'*A)): max relative difference = 1.38e-14
+Check U*S*V' = A: max reconstruction difference = 3.60e-11
+
+-----------------------------------------------------------------------------------------
+    k   Rank      Storage      Ratio    Saved %   Energy %    Error %        MSE    PSNR dB
+-----------------------------------------------------------------------------------------
+ Full    400       240000       1.00       0.00     100.00       0.00       0.00        Inf
+    5      5         5005      47.95      97.91      95.10      22.10     689.72      19.74
+   10     10        10010      23.98      95.83      97.10      17.00     408.23      22.02
+   20     20        20020      11.99      91.66      98.24      13.24     247.47      24.20
+   50     50        50050       4.80      79.15      99.11       9.40     124.69      27.17
+  100    100       100100       2.40      58.29      99.64       5.99      50.62      31.09
+-----------------------------------------------------------------------------------------
+Smallest k with PSNR >= 30 dB : k = 86  (PSNR 30.03 dB, compression ratio 2.79, energy 99.54%)
+Compression saves space only while k < 239 (break-even point)
+
+All figures, compressed images and results.csv saved in the "output" folder.
